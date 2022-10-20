@@ -26,5 +26,23 @@ export const useServices = (table: string) => {
       )
     );
   };
-  return { addData };
+
+  const findAll = () => {
+    return new Promise((resolve, reject) =>
+      db.transaction(
+        (tx) => {
+          tx.executeSql(`select * from ${table}`, [], (_, { rows }) => {
+            resolve(rows);
+          }),
+            (sqlError) => {
+              console.log(sqlError);
+            };
+        },
+        (txError) => {
+          console.log(txError);
+        }
+      )
+    );
+  };
+  return { addData, findAll };
 };
