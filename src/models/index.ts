@@ -1,3 +1,3 @@
-export {Albuns} from './Albuns'
-export {Posts} from './Posts'
-export {Comments} from './Comments'
+export { Albuns } from "./Albuns";
+export { Posts } from "./Posts";
+export { Comments } from "./Comments";
