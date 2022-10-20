@@ -9,7 +9,7 @@ export const useDB = () => {
     let qry = [
       `DROP TABLE IF EXISTS posts;`,
       `DROP TABLE IF EXISTS comments;`,
-      `DROP TABLE IF EXISTS albuns;`,
+      `DROP TABLE IF EXISTS todos;`,
 
       `create table if not exists posts (
             userId integer,
@@ -26,10 +26,11 @@ export const useDB = () => {
             body text,
             foreign key (postId) references posts (id)
             );`,
-      `create table if not exists albuns (
+      `create table if not exists todos (
             userId integer,
             id integer primary key,
             title text,
+            completed boolean
             );`,
     ];
     db.transaction(
